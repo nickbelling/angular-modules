@@ -4,18 +4,14 @@
         "module": "es2015",
         "moduleResolution": "node",
         "sourceMap": true,
-        "outDir": "aot/non-codegen-transpiled-src",
+        "outDir": "aot",
         "emitDecoratorMetadata": true,
         "experimentalDecorators": true,
-        "lib": ["es2015", "dom"],
+        "lib": ["es2017", "dom"],
         "noImplicitAny": true,
         "suppressImplicitAnyIndexErrors": true
     },
     "files": [
         "src/app/child.module.ts"
-    ],
-    "angularCompilerOptions": {
-        "genDir": "aot",
-        "skipMetadataEmit": true
-    }
+    ]
 }
