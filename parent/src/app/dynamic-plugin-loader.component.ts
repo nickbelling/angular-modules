@@ -1,5 +1,5 @@
 import { Component, Injector, OnInit, ViewContainerRef, NgModuleFactory, Input, ComponentFactory } from '@angular/core';
-import { Http } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
 import 'rxjs/add/operator/map';
 
 import { PluginMetadata } from './plugin-metadata.model';
@@ -15,7 +15,7 @@ export class DynamicComponentLoader implements OnInit {
     constructor(
         private injector: Injector,
         private viewRef: ViewContainerRef,
-        private http: Http
+        private http: HttpClient
     ) {}
 
     ngOnInit() {
@@ -26,9 +26,9 @@ export class DynamicComponentLoader implements OnInit {
         const pluginEntryPointToken = 'PLUGIN_ENTRY_POINT';
 
         // Retrieve the plugin metadata
-        this.http.get(`${pluginUrlPrefix}/${this.name}/${metadataFilename}`)
-            .map(res => res.json())
-            .map((metadata: PluginMetadata) => {
+        this.http.get<PluginMetadata>(`${pluginUrlPrefix}/${this.name}/${metadataFilename}`)
+            .subscribe(
+                (metadata) => {
 
                 // Create the element to load in the module and factories
                 const script = document.createElement('script');
@@ -51,7 +51,7 @@ export class DynamicComponentLoader implements OnInit {
                 // Add the script to the page
                 document.head.appendChild(script);
 
-            }).subscribe();
+            });
     }
 
 }
