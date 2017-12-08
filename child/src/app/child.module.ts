@@ -1,8 +1,12 @@
-import { NgModule, InjectionToken } from '@angular/core';
-
+import { NgModule } from '@angular/core';
+import { MatCommonModule, MatButtonModule } from '@angular/material';
 import { ChildComponent } from './child.component';
 
 @NgModule({
+    imports: [
+        MatCommonModule,
+        MatButtonModule,
+    ],
     declarations: [
         ChildComponent
     ],
