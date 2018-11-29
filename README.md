@@ -1,4 +1,5 @@
-Based heavily on dynamic technique by Toxicable, found at: https://github.com/Toxicable/module-loading
+A technique which leverages Angular Elements to bootstrap an unknown-at-runtime series of plugins into a main, parent
+app in an enterprise setting.
 
 To run, build the parent app:
 

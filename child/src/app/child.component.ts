@@ -1,17 +1,32 @@
 import { Component } from '@angular/core';
 
+/** If you can see this comment, you have full mapping information from the child plugin in the browser! */
 @Component({
-    selector: "child-plugin",
-    template: `
-    <h1>I'M A CHILD THAT WAS LOADED</h1>
-    <h2>My name is {{name}}</h2>
-    <!--<button mat-raised-button>I'm a material button!</button>-->
-    `
+    templateUrl: 'child.component.html',
+    styleUrls: ['child.component.scss']
 })
 export class ChildComponent {
-    name: string;
 
-    constructor() {
-        this.name = "Bob";
+    /** The counter that's incremented by the @see incrementCounter function. */
+    counter: number = 0;
+
+    /** Increments the @see counter. */
+    incrementCounter() {
+        this.counter++;
+    }
+
+    /** Throws an error with full stack info. */
+    error() {
+        this.stack1();
+    }
+
+    /** A layer on the stack. */
+    stack1() {
+        this.stack2();
+    }
+
+    /** Another layer on the stack. Actually throws the error. */
+    stack2() {
+        console.error("This is an error with hopefully lots of state information.");
     }
 }

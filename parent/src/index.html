@@ -4,11 +4,10 @@
   <meta charset="utf-8">
   <title>Parent</title>
   <base href="/">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
-</head>
-<body>
+
   <script src="tslib.js" type="text/javascript"></script>
   <script type="text/javascript">
     window.tslib = {};
@@ -16,15 +15,11 @@
   </script>
   <script src="zone.js" type="text/javascript"></script>
   <script src="long-stack-trace-zone.js" type="text/javascript"></script>
-  <script src="Rx.js" type="text/javascript"></script>
-  <script type="text/javascript">
-    Rx.Symbol.$$observable = Rx.Symbol.observable;
-    window.rxjs_symbol_observable = Rx.Symbol;
-  </script>
+  <script src="rxjs.umd.js" type="text/javascript"></script>
   <script src="Reflect.js" type="text/javascript"></script>
+  <script src="core.umd.js" type="text/javascript"></script>
   <script src="animations.umd.js" type="text/javascript"></script>
   <script src="animations-browser.umd.js" type="text/javascript"></script>
-  <script src="core.umd.js" type="text/javascript"></script>
   <script src="common.umd.js" type="text/javascript"></script>
   <script src="common-http.umd.js" type="text/javascript"></script>
   <script src="compiler.umd.js" type="text/javascript"></script>
@@ -34,22 +29,27 @@
   <script src="forms.umd.js" type="text/javascript"></script>
 
   <script src="cdk.umd.js" type="text/javascript"></script>
+  <script src="cdk-bidi.umd.js" type="text/javascript"></script>
   <script src="cdk-observers.umd.js" type="text/javascript"></script>
   <script src="cdk-platform.umd.js" type="text/javascript"></script>
   <script src="cdk-scrolling.umd.js" type="text/javascript"></script>
   <script src="cdk-portal.umd.js" type="text/javascript"></script>
   <script src="cdk-keycodes.umd.js" type="text/javascript"></script>
   <script src="cdk-a11y.umd.js" type="text/javascript"></script>
-  <script src="cdk-bidi.umd.js" type="text/javascript"></script>
   <script src="cdk-coercion.umd.js" type="text/javascript"></script>
   <script src="cdk-collections.umd.js" type="text/javascript"></script>
   <script src="cdk-layout.umd.js" type="text/javascript"></script>
+  <script src="cdk-text-field.umd.js" type="text/javascript"></script>
   <script src="cdk-overlay.umd.js" type="text/javascript"></script>
   <script src="cdk-stepper.umd.js" type="text/javascript"></script>
   <script src="cdk-table.umd.js" type="text/javascript"></script>
   <script src="cdk-accordion.umd.js" type="text/javascript"></script>
+  <script src="cdk-tree.umd.js" type="text/javascript"></script>
 
   <script src="material.umd.js" type="text/javascript"></script>
+
+</head>
+<body class="mat-app-background">
   <app-root></app-root>
 </body>
 </html>

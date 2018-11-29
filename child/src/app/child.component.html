@@ -1,0 +1,22 @@
+<h1>Oh damn, magic happened!</h1>
+<h2>If you can see me, the dynamic plugin loading works.</h2>
+<p>The button below has been clicked {{counter}} times.</p>
+<div class="outer">
+    <p>
+        This block proves that complex SCSS rules defined in the child plugin work correctly.
+        You should see this inside an orange block, with a green block inside.
+    </p>
+    
+    <button mat-raised-button (click)="incrementCounter()">Click me to increment a counter</button>
+
+    <div class="inner">
+        <p>
+            This block proves that you can load material modules that aren't referenced in the main app.
+            The main app doesn't include <code>MatCheckboxModule</code>, but this plugin does.
+        </p>
+        <mat-checkbox>I'm a material checkbox!</mat-checkbox>
+    </div>
+</div>
+
+<p>The button below should throw an error, yet still provide you with full stack trace information.</p>
+<button mat-raised-button (click)="error()">Click me to throw a console error</button>

@@ -1,28 +1,26 @@
-import { Component, Injector, OnInit, ViewContainerRef, NgModuleFactory, Input, ComponentFactory } from '@angular/core';
+import { Component, OnInit, ViewContainerRef, ComponentFactory, Input, NgModuleFactory } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import 'rxjs/add/operator/map';
+import 'rxjs';
 
 import { PluginMetadata } from './plugin-metadata.model';
 
 @Component({
-    selector: 'dynamic-component-loader',
-    template: ' ' // There has to be a template or angular complains at runtime
+    selector: 'plugin',
+    template: ' ' // There has to be a default template or angular complains at runtime
 })
-export class DynamicComponentLoader implements OnInit {
+export class PluginLoaderComponent implements OnInit {
 
     @Input() name: string;
 
     constructor(
-        private injector: Injector,
         private viewRef: ViewContainerRef,
         private http: HttpClient
     ) {}
 
     ngOnInit() {
         const metadataFilename: string = 'plugin-metadata.json';
-        const factoryFilename: string = 'plugin-factory.umd.js';
+        const factoryFilename: string = 'main.js';
         const pluginUrlPrefix: string = 'plugins';
-        const factorySuffix: string = 'NgFactory';
         const pluginEntryPointToken = 'PLUGIN_ENTRY_POINT';
 
         // Retrieve the plugin metadata
@@ -34,15 +32,14 @@ export class DynamicComponentLoader implements OnInit {
                 const script = document.createElement('script');
                 script.src = `${pluginUrlPrefix}/${this.name}/${factoryFilename}`;
 
-                // Set up the script's onload event to inject the component
+                // Set up the script's onload event to actually fetch and render the component
                 script.onload = () => {
-                    // Rollup builds the bundle so it's attached to the window object when loaded in
-                    const moduleFactory: NgModuleFactory<any> = window[metadata.name][metadata.moduleName + factorySuffix];
-                    const moduleRef = moduleFactory.create(this.injector);
+                    // The plugin module's injector should be stored against the window using its module name
+                    let moduleInjector = window[metadata.moduleName];
 
                     // Use the entry point token to grab the component type that we should be rendering
-                    const componentType = moduleRef.injector.get(pluginEntryPointToken);
-                    const componentFactory = moduleRef.componentFactoryResolver.resolveComponentFactory(componentType);
+                    const componentType: any = moduleInjector.get(pluginEntryPointToken);
+                    const componentFactory: ComponentFactory<{}> = moduleInjector.componentFactoryResolver.resolveComponentFactory(componentType);
 
                     // Push the component to the view
                     this.viewRef.createComponent(componentFactory);
@@ -50,8 +47,6 @@ export class DynamicComponentLoader implements OnInit {
 
                 // Add the script to the page
                 document.head.appendChild(script);
-
             });
     }
-
 }
