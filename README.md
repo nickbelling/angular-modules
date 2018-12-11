@@ -1,5 +1,5 @@
-A technique which leverages Angular Elements to bootstrap an unknown-at-runtime series of plugins into a main, parent
-app in an enterprise setting.
+A technique which leverages Angular AoT compilation to bootstrap an unknown-at-runtime series of plugins into a main, 
+parent app in an enterprise setting.
 
 To run, build the parent app:
 
