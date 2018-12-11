@@ -20,15 +20,7 @@
             "outputPath": "dist/child",
             "index": "src/index.html",
             "main": "src/main.ts",
-            "tsConfig": "src/tsconfig.app.json",
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ],
-            "styles": [
-              "src/styles.scss"
-            ],
-            "scripts": []
+            "tsConfig": "src/tsconfig.app.json"
           },
           "configurations": {
             "production": {
