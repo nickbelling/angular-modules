@@ -1,5 +1,14 @@
 <div class="mat-typography">
     <h1>This is the parent app</h1>
+    <p>
+        <button mat-raised-button [matMenuTriggerFor]="menu">Click me to pop a menu (parent)</button>
+    </p>
     <p>This is just the main, hosting app. The magic has happened for real if you see anything below.</p>
     <plugin name="child"></plugin>
 </div>
+
+<mat-menu #menu="matMenu">
+    <button mat-menu-item>This is only impressive</button>
+    <button mat-menu-item>if the plugin can also</button>
+    <button mat-menu-item>pop a menu of its own.</button>
+</mat-menu>

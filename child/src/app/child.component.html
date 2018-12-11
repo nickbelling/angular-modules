@@ -19,4 +19,16 @@
 </div>
 
 <p>The button below should throw an error, yet still provide you with full stack trace information.</p>
-<button mat-raised-button (click)="error()">Click me to throw a console error</button>
+<p>
+    <button mat-raised-button (click)="error()">Click me to throw a console error</button>
+</p>
+
+<p>The button below should open a menu, using the same CDK overlay context as the parent app.</p>
+<p>
+    <button mat-raised-button [matMenuTriggerFor]="menu">Click me to pop a menu (plugin)</button>
+</p>
+
+<mat-menu #menu="matMenu">
+    <button mat-menu-item>OMG!</button>
+    <button mat-menu-item>I worked!</button>
+</mat-menu>
